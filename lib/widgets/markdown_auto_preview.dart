@@ -27,6 +27,7 @@ class MarkdownAutoPreview extends StatefulWidget {
     this.textCapitalization = TextCapitalization.sentences,
     this.readOnly = false,
     this.expands = false,
+    this.hintText = '',
     this.decoration = const InputDecoration(isDense: true),
   }) : super(key: key);
 
@@ -176,6 +177,8 @@ class MarkdownAutoPreview extends StatefulWidget {
   /// Defaults to false.
   final bool expands;
 
+  final String hintText;
+
   @override
   State<MarkdownAutoPreview> createState() => _MarkdownAutoPreviewState();
 }
@@ -269,7 +272,7 @@ class _MarkdownAutoPreviewState extends State<MarkdownAutoPreview> {
                 child: MarkdownBody(
                   key: const ValueKey<String>("zmarkdown-parse-body"),
                   data: _internalController.text == ""
-                      ? "_Markdown text_"
+                      ? widget.hintText
                       : _internalController.text,
                 ),
               ),
